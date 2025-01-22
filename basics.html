@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic HTML Tags</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Main Heading</h1>
+        <h2>Subheading</h2>
+        <h3>Smaller Subheading</h3>
+
+        <p>This is a paragraph.</p>
+
+        <a href="https://www.tce.edu/" target="_blank">Click here</a>
+
+        <h1>Image Map Example</h1>
+        <img src="https://interactive-examples.mdn.mozilla.net/media/examples/mdn-info2.png" alt="HTML, CSS, JavaScript Triangle" usemap="#webmap" width="300">
+        
+        <map name="webmap">
+            <area shape="poly" coords="150,10,210,90,90,90" href="https://www.w3schools.com/js/default.asp" alt="HTML Section">
+            <area shape="poly" coords="90,90,50,180,150,250" href="https://www.w3schools.com/css/default.asp" alt="CSS Section">
+            <area shape="poly" coords="210,90,250,180,150,250" href="https://www.w3schools.com/html/" alt="JavaScript Section">
+        </map>
+
+        <h2>Lists</h2>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <ol>
+            <li>First Item</li>
+            <li>Second Item</li>
+            <li>Third Item</li>
+        </ol>
+
+        <h2>Table</h2>
+        <table border="1">
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+            </tr>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+            </tr>
+        </table>
+
+        <h2>Form</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h2>Audio</h2>
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+        </audio>
+
+        <h2>Video</h2>
+        <video controls width="320">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+    <footer>
+        <p>© 2025 Basic HTML Tutorial. All rights reserved.</p>
+    </footer>
+</body>
+</html>
