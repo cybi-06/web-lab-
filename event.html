@@ -22,6 +22,7 @@
         h1 {
             text-align: center;
             color: #343a40;
+            cursor: pointer;
         }
         form {
             display: flex;
@@ -55,47 +56,83 @@
             width: auto;
             margin-right: 5px;
         }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-        
         button {
             background-color: #007bff;
             color: #ffffff;
             border: none;
             cursor: pointer;
         }
-        
         button.reset {
             background-color: #6c757d;
         }
-        
     </style>
+    <script>
+        window.onload = function() {
+            alert("Welcome to JobStack Registration Form!");
+
+            // Double Click Event: Alert when clicking title
+            document.getElementById("formTitle").ondblclick = function() {
+                alert("You double-clicked the form title!");
+            };
+
+            // Gender Change Event
+            document.getElementsByName("gender").forEach(radio => {
+                radio.addEventListener("change", function() {
+                    document.getElementById("genderDisplay").innerText = "Gender: " + this.value;
+                });
+            });
+
+            // Mouse Events: Change button colors on hover
+            let submitButton = document.getElementById("submitBtn");
+            submitButton.onmouseover = function() {
+                this.style.backgroundColor = "#0056b3";
+            };
+            submitButton.onmouseout = function() {
+                this.style.backgroundColor = "#007bff";
+            };
+
+            // Form Submit Event
+            document.getElementById("jobForm").onsubmit = function(event) {
+                event.preventDefault();
+                alert("Form submitted successfully!");
+            };
+
+            // Form Reset Event
+            document.getElementById("jobForm").onreset = function() {
+                alert("Form reset successfully!");
+                document.getElementById("genderDisplay").innerText = "";
+            };
+
+            // Submit Button Click Event
+            document.getElementById("submitBtn").onclick = function() {
+                alert("You clicked the submit button!");
+            };
+        };
+    </script>
 </head>
 <body>
     <div class="container">
-        <h1>JobStack Registration</h1>
-        <form action="another.html" method="post" >
+        <h1 id="formTitle">JobStack Registration</h1>
+        <form id="jobForm">
             <fieldset>
                 <legend>Personal Information</legend>
                 <label for="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname"  placeholder="Enter your full name" required>
-
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="8">
 
-                <label for="gender">Gender:</label>
-                <input type="radio" id="male" name="gender" value="male">
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="Male">
                 <label for="male">Male</label>
-                <input type="radio" id="female" name="gender" value="female">
+                <input type="radio" id="female" name="gender" value="Female">
                 <label for="female">Female</label>
-                <input type="radio" id="other" name="gender" value="other">
+                <input type="radio" id="other" name="gender" value="Other">
                 <label for="other">Other</label>
+                <p id="genderDisplay" style="color: #007bff; font-weight: bold;"></p>
             </fieldset>
 
             <fieldset>
@@ -126,14 +163,14 @@
                 <legend>Additional Information</legend>
                 <label for="address">Address:</label>
                 <textarea id="address" name="address" rows="4" placeholder="Enter your address"></textarea>
-
+                
                 <label for="terms">
                     <input type="checkbox" id="terms" name="terms" required>
                     I agree to the <a href="#">terms and conditions</a>
                 </label>
             </fieldset>
 
-            <button type="submit">Submit</button>
+            <button type="submit" id="submitBtn">Submit</button>
             <button type="reset" class="reset">Reset</button>
         </form>
     </div>

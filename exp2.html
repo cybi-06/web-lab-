@@ -55,40 +55,63 @@
             width: auto;
             margin-right: 5px;
         }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-        
         button {
             background-color: #007bff;
             color: #ffffff;
             border: none;
             cursor: pointer;
         }
-        
         button.reset {
             background-color: #6c757d;
         }
-        
     </style>
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            fetch('another.html', {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                alert('Data sent to another.html using POST');
+            }).catch(error => {
+                alert('Error sending data');
+            });
+        }
+        window.onload = function() {
+            alert("Welcome to JobStack Registration Form!");
+        };
+
+        function highlightButton(element) {
+            element.style.backgroundColor = "#0056b3";
+        }
+
+        function resetHighlight(element) {
+            element.style.backgroundColor = "#007bff";
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert("Form submitted successfully!");
+        }
+
+        function handleReset() {
+            alert("Form reset successfully!");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>JobStack Registration</h1>
-        <form action="another.html" method="post" >
+        <form onsubmit="handleFormSubmit(event)" onreset="handleReset()" method="post" action="another.html">
             <fieldset>
                 <legend>Personal Information</legend>
                 <label for="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname"  placeholder="Enter your full name" required>
-
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="8">
-
                 <label for="gender">Gender:</label>
                 <input type="radio" id="male" name="gender" value="male">
                 <label for="male">Male</label>
@@ -109,7 +132,6 @@
                     <option value="HTML">
                     <option value="CSS">
                 </datalist>
-
                 <label for="experience">Experience Level:</label>
                 <select id="experience" name="experience">
                     <option value="0-1">0-1 Year</option>
@@ -117,7 +139,6 @@
                     <option value="4-5">4-5 Years</option>
                     <option value="5+">5+ Years</option>
                 </select>
-
                 <label for="resume">Upload Resume:</label>
                 <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx">
             </fieldset>
@@ -126,14 +147,13 @@
                 <legend>Additional Information</legend>
                 <label for="address">Address:</label>
                 <textarea id="address" name="address" rows="4" placeholder="Enter your address"></textarea>
-
                 <label for="terms">
                     <input type="checkbox" id="terms" name="terms" required>
                     I agree to the <a href="#">terms and conditions</a>
                 </label>
             </fieldset>
 
-            <button type="submit">Submit</button>
+            <button type="submit" onmouseover="highlightButton(this)" onmouseout="resetHighlight(this)">Submit</button>
             <button type="reset" class="reset">Reset</button>
         </form>
     </div>
